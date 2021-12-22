@@ -15,6 +15,17 @@ class PokemonDetail extends Component {
     })
   }
 
+  getProbabylity = () => {
+    const random = Math.floor(Math.random() * 100);
+    if (random % 2 === 0) {
+      console.log('true')
+    } else {
+      console.log('false')
+    }
+
+    console.log(random)
+  }
+
   GET_POKEMON = gql`
   query pokemon($name: String!) {
     pokemon(name: $name) {
@@ -52,12 +63,12 @@ class PokemonDetail extends Component {
     return (
       <div className="row">
         <div className="col-12">
-          <div className="card">
+          <div className="card-detail">
             <div className="img-thumb">
               <img src={pokemon.sprites.front_default} alt="" />
             </div>
             <p className="pokemon-name" >{pokemon.name.toUpperCase()}</p>
-            <button className="btn" id="catch">Catch The Pokemon</button>
+            <button className="btn" id="catch" onClick={(e) => this.getProbabylity(e)}>Catch The Pokemon</button>
             <div className="detail">
               <p className="title">
                 Moves
@@ -82,9 +93,9 @@ class PokemonDetail extends Component {
             </div>
 
           </div>
-        </div>
+        </div >
 
-      </div>
+      </div >
     )
   };
 
