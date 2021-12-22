@@ -17,36 +17,6 @@
   margin: 10px;
 }
 
-.product-price {
-  color: orange;
-  font-weight: 700;
-  margin-left: 10px;
-}
-
-.minus,
-.plus {
-  color: white;
-  height: 45px;
-  width: 45px;
-  background: rgb(0, 0, 145);
-  border-radius: 5px;
-  border: 0;
-  margin: 2px 6px;
-}
-
-.counter {
-  margin-left: 12px;
-  margin-bottom: 10px;
-}
-
-.counter input {
-  height: 40px;
-  width: 200px;
-  border-radius: 3px;
-  border: 1px solid gray;
-  text-align: center;
-}
-
 .row{
   display: flex;
   flex-wrap: wrap;

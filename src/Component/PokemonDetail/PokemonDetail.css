@@ -59,8 +59,8 @@ li:hover {
 }
 
 .btn {
+  display: block;
   width: 100%;
-  margin: 5px;
   border-radius: 5px;
   padding: 10px;
   background-color: deepskyblue;
@@ -68,4 +68,11 @@ li:hover {
   font-weight: 700;
   font-size: 13pt;
   color: #f5f5f5;
+}
+
+.input {
+  width: 93%;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
 }
