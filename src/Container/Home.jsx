@@ -48,26 +48,24 @@ class Home extends Component {
   render() {
     return (
       <ApolloProvider client={client} >
-        <main>
-          <Fragment>
-            <div >
-              <div className="header">
-                <div className="back">
-                  <img src="https://svgsilh.com/svg/1646213.svg" alt="" onClick={(e) => this.handleBack(e)} />
-                </div>
+        <Fragment>
+          <div >
+            <div className="header">
+              <div className="back">
+                <img src="https://svgsilh.com/svg/1646213.svg" alt="" onClick={(e) => this.handleBack(e)} />
               </div>
-              {/* <div className="row"> */}
-              {
-                <this.handleComponent />
-                // <PokemonList nameSender={(value) => this.handleSender(value)} />
-                // <PokemonList />
-                // <PokemonDetail />
-              }
-              {/* </div> */}
-              {/* <p>{this.state.PokemonName}</p> */}
             </div>
-          </Fragment>
-        </main>
+            {/* <div className="row"> */}
+            {
+              <this.handleComponent />
+              // <PokemonList nameSender={(value) => this.handleSender(value)} />
+              // <PokemonList />
+              // <PokemonDetail />
+            }
+            {/* </div> */}
+            {/* <p>{this.state.PokemonName}</p> */}
+          </div>
+        </Fragment>
       </ApolloProvider>
     )
   }
