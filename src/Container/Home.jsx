@@ -64,7 +64,7 @@ class Home extends Component {
     if (local !== null) {
       // if (local.length > 2) {
       let jumlah = local.split(",");
-      console.log(jumlah.length);
+      console.log(jumlah);
       this.setState({
         countMyPoke: jumlah.length
       })
@@ -77,7 +77,9 @@ class Home extends Component {
   }
 
   handleCountMyPoke = (newValue) => {
-
+    this.setState({
+      countMyPoke: newValue
+    })
   }
 
   render() {

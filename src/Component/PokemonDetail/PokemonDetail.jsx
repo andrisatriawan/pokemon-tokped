@@ -6,7 +6,8 @@ import './PokemonDetail.css'
 
 class PokemonDetail extends Component {
   state = {
-    PokemonName: ''
+    PokemonName: '',
+    count: ''
   }
 
   handleState = () => {
@@ -19,8 +20,9 @@ class PokemonDetail extends Component {
     const random = Math.floor(Math.random() * 100);
     if (random % 2 === 0) {
       console.log('true')
-
+      alert("Congratulation!!, you got this pokemon, name it")
       document.getElementById('nickname').disabled = false
+      document.getElementById('nickname').focus()
       // document.getElementById('btn-save').disabled = false
       // document.getElementById('btn-save').onClick = (e) => this.getValue(e)
 
@@ -42,7 +44,7 @@ class PokemonDetail extends Component {
     } else {
       console.log('false')
       document.getElementById('nickname').disabled = true
-
+      alert("Try Again!")
     }
   }
 
@@ -59,28 +61,47 @@ class PokemonDetail extends Component {
   save = (name, image) => {
     // console.log(value)
     let nickname = document.getElementById('nickname').value
+
+    let nickname_element = document.getElementById('nickname')
     // console.log(name)
-    const lookCache = localStorage.getItem('nickname');
-    let newNickname = [];
-    let newNicknameData = [];
-    if (lookCache === null) {
-      newNickname.push(nickname);
-      newNicknameData.push(name);
-      newNicknameData.push(image);
-      // localStorage.setItem(nickname, nickname);
+    if (nickname.length !== 0 & nickname.length >= 3) {
+
+      const lookCache = localStorage.getItem('nickname');
+      let newNickname = [];
+      let newNicknameData = [];
+      if (lookCache === null) {
+        newNickname.push(nickname);
+        newNicknameData.push(name);
+        newNicknameData.push(image);
+        // localStorage.setItem(nickname, nickname);
+      } else {
+        newNickname = [lookCache];
+        newNickname.push(nickname);
+        newNicknameData.push(name);
+        newNicknameData.push(image);
+        // localStorage.setItem('nickname', nickname);
+      }
+      localStorage.setItem('nickname', newNickname);
+      localStorage.setItem(nickname, newNicknameData);
+
+      alert('Berhasil disimpan')
+      nickname_element.value('');
+      nickname_element.disabled = true
     } else {
-      newNickname = [lookCache];
-      newNickname.push(nickname);
-      newNicknameData.push(name);
-      newNicknameData.push(image);
-      // localStorage.setItem('nickname', nickname);
+      alert('Give a nickname of at least 3 characters!')
+      nickname_element.focus()
     }
-    localStorage.setItem('nickname', newNickname);
-    localStorage.setItem(nickname, newNicknameData);
 
-    // console.log(newNickname);
-    // console.log(newNicknameData)
+    // this.setState({
+    //   count: lookCache.length + 1
+    // }, () => {
+    //   this.handleCounter(this.state.count)
+    // })
 
+  }
+
+  handleCounter = (newValue) => {
+    this.props.senderCount(newValue);
   }
 
   cekCache = () => {
@@ -137,7 +158,7 @@ class PokemonDetail extends Component {
             </div>
             <p className="pokemon-name" >{pokemon.name.toUpperCase()}</p>
             <button className="btn" onClick={(e) => this.getProbabylity(e)}>Catch The Pokemon</button>
-            <input type="text" id="nickname" className="input" disabled />
+            <input type="text" id="nickname" placeholder="nickname" className="input" disabled />
             <button className="btn" id="btn-save" onClick={(e) => this.save(pokemon.name, pokemon.sprites.front_default, e)}>Save</button>
             <div className="detail">
               <p className="title">
